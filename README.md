@@ -1,4 +1,4 @@
-vagrant-web-prototype
-=====================
+Web prototype
+============
 
-Used Slim &amp; MySQL
+Used Slim
