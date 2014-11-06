@@ -1,6 +1,10 @@
 # Vagrant files
 .vagrant
 
+# Composer file
+vendor
+composer.phar
+
 # Global/Temp file
 *~
 *.swp
