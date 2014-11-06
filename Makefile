@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 
-.PHONY: install rebuild composer.phar
+.PHONY: install rebuild composer.phar update update-dep
 
 install:
 	vagrant up
