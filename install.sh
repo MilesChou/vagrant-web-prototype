@@ -5,6 +5,9 @@
 #                                  #
 ####################################
 
+# Setup Timezone
+TIMEZONE="Asia/Taipei"
+
 # Setup packages and version
 NGINX_VERSION=1.1.19-1ubuntu0.6
 PHP5_FPM_VERSION=5.3.10-1ubuntu3.15
@@ -52,7 +55,7 @@ server {
         fastcgi_pass unix:/var/run/php5-fpm.sock;
         fastcgi_index index.php;
         include fastcgi_params;
-        
+
         # for Zend Framework
         fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
         fastcgi_param APPLICATION_ENV development;
@@ -70,6 +73,9 @@ if [ "`whoami`" != "root" ]; then
     exit 1
 fi
 
+# set time zone
+ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
+
 # update server
 apt-get update
 
@@ -80,7 +86,6 @@ apt-get install -y $DEFAULT_PACKAGES nginx=$NGINX_VERSION php5-fpm=$PHP5_FPM_VER
 sed -i 's/^error_reporting =.*/error_reporting = E_ALL \| E_STRICT/g' /etc/php5/fpm/php.ini
 sed -i 's/^display_errors =.*/display_errors = On/g' /etc/php5/fpm/php.ini
 sed -i 's/^display_startup_errors =.*/display_startup_errors = On/g' /etc/php5/fpm/php.ini
-sed -i 's/^;date.timezone =.*/date.timezone = Asia\/Taipei/g' /etc/php5/fpm/php.ini
 
 # modified php5-fpm conf
 # unix:/var/run/php5-fpm.sock
@@ -114,4 +119,3 @@ mv composer.phar /usr/local/bin/composer
 
 # initial slim framework
 cd /vagrant && composer install
-
