@@ -111,6 +111,7 @@ apt-get install -y mysql-server
 sed -i 's/127\.0\.0\.1/0\.0\.0\.0/g' /etc/mysql/my.cnf
 service mysql restart
 mysql -uroot -ppassword -e 'USE mysql; UPDATE `user` SET `Host`="%" WHERE `User`="root" AND `Host`="localhost"; DELETE FROM `user` WHERE `Host` != "%" AND `User`="root"; FLUSH PRIVILEGES;'
+mysql -uroot -ppassword -e 'CREATE DATABASE default;'
 mysql -uroot -ppassword -e "SET PASSWORD = PASSWORD('');"
 
 # install composer
