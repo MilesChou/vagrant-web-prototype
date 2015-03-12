@@ -9,30 +9,20 @@
 TIMEZONE="Asia/Taipei"
 
 # Setup packages and version
-NGINX_VERSION=1.1.19-1ubuntu0.6
-PHP5_FPM_VERSION=5.3.10-1ubuntu3.15
 
 DEFAULT_PACKAGES_LIST="
 git
 vim
 curl
+php5-fpm
 php5-cli
+php5-xdebug
 "
 
 DEFAULT_PACKAGES=""
 for package in $DEFAULT_PACKAGES_LIST
 do
     DEFAULT_PACKAGES="$DEFAULT_PACKAGES $package"
-done
-
-EXTENSIONS_LIST="
-php5-xdebug=2.1.0-1
-"
-
-EXTENSIONS=""
-for extension in $EXTENSIONS_LIST
-do
-    EXTENSIONS="$EXTENSIONS $extension"
 done
 
 # Configurations
@@ -80,7 +70,7 @@ ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
 apt-get update
 
 # install packages
-apt-get install -y $DEFAULT_PACKAGES nginx=$NGINX_VERSION php5-fpm=$PHP5_FPM_VERSION $EXTENSIONS
+apt-get install -y $DEFAULT_PACKAGES
 
 # modified php.ini
 sed -i 's/^error_reporting =.*/error_reporting = E_ALL \| E_STRICT/g' /etc/php5/fpm/php.ini
