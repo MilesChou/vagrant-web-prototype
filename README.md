@@ -32,3 +32,4 @@ clone 下來之後，使用命令列到下載的目錄下，下指令即可安�
 
 - 私有 ip 是 `10.10.10.10`
 - 裡面有 MariaDB ，帳號是 root ，密碼為 password
+- 登入虛擬機可以參考[這一篇](https://gist.github.com/chgu82837/ab1255846b5335407105)
