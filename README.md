@@ -3,6 +3,14 @@ Web prototype
 
 使用 Vagrant 和 Slim Framework 建置 prototype 開發環境
 
+內含下列套件
+
+- PHP 5.6
+- MariaDB
+- Memcached
+- MongoDB
+- Redis
+
 Requirement
 -----------
 
